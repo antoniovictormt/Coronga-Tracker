@@ -3,7 +3,7 @@ import React from 'react';
 function CountryPicker() {
   return (
     <div>
-      Hello CountryPicker
+      <h1>Hello CountryPicker</h1>
     </div>
   )
 }

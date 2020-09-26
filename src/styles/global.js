@@ -3,9 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   :root {
     font-size: 60%;
-
     --color-background: #f0f0f7;
-
   }
 
   * {
@@ -18,22 +16,22 @@ const GlobalStyles = createGlobalStyle`
     background: var(--color-background);
   }
 
-  #root {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   body,
   input,
   button,
   textarea {
-    font: 500 1.6rem Poppins;
+    font: 500 1.6rem Sans-serif;
     color: var(--color-text-base);
   } 
 
   button{
     outline: 0;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   @media (min-width: 1100px) {
@@ -42,5 +40,4 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 `
-
 export default GlobalStyles;
