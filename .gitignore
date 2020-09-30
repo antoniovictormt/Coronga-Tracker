@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+/src/components/Cards/styles.js
+/src/components/Chart/styles.js
+/src/components/CountryPicker/styles.js
+/src/styles/global.js
+
 # testing
 /coverage
 
