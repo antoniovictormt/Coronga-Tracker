@@ -3,8 +3,7 @@ import React from 'react';
 import { Cards, Chart, CountryPicker } from './components'
 import { fechData } from './api'
 
-import GlobalStyles from './styles/global';
-
+import styles from './styles/App.module.css';
 class App extends React.Component {
   state = {
     data: {},
@@ -13,14 +12,13 @@ class App extends React.Component {
   async componentDidMount() {
     const fechedData = await fechData();
 
-    this.setState({ fechedData })
+    this.setState({ data: fechedData })
   }
 
   render() {
     const { data } = this.state
     return (
-      <div className="container">
-        <GlobalStyles />
+      <div className={styles.container}>
         <Cards data={data} />
         <Chart />
         <CountryPicker />
