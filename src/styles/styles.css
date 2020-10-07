@@ -1,0 +1,57 @@
+:root {
+  --color-primary: #ff0000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f5f6fa;
+  font-family: Sans-serif;
+}
+
+.app {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.app_left {
+  flex: 0.9;
+}
+
+.appHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.appHeader img {
+  width: 400px;
+}
+
+.appStats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+
+@media (max-width: 1230px) {
+  .app,
+  .appHeader,
+  .appStats {
+    flex-direction: column;
+  }
+
+  .appHeader .select {
+    margin-top: 10px;
+  }
+
+  .appStats .infoBox {
+    margin-bottom: 5px;
+  }
+}
