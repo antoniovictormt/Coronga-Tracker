@@ -1,16 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, FormControl, MenuItem, Select } from '@material-ui/core';
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, FormControl, MenuItem, Select } from "@material-ui/core";
 
-import { InfoBox, Map, Table } from './components';
-import logoImg from './assets/coronga_tracker.svg';
+import { InfoBox, LineGraph, Map, Table } from "./components";
+import { sortData } from "./util";
+import "leaflet/dist/leaflet.css";
 
-import './styles/styles.css';
+import logoImg from "./assets/coronga_tracker.svg";
+
+import "./styles/styles.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapCountries, setMapCountries] = useState([]);
+  const [mapZoom, setMapZoom] = useState(3);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -31,7 +37,9 @@ function App() {
             value: country.countryInfo.iso2, //BRA, FRA, SPA
           }));
 
-          setTableData(data);
+          const sortedData = sortData(data);
+          setTableData(sortedData);
+          setMapCountries(data);
           setCountries(countries);
         });
     };
@@ -40,7 +48,6 @@ function App() {
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    setCountry(countryCode);
 
     const url =
       countryCode === 'worldwide'
@@ -50,7 +57,12 @@ function App() {
     await fetch(url)
       .then(response => response.json())
       .then(data => {
+        setCountry(countryCode);
         setCountryInfo(data);
+
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4)
+
       })
   };
 
@@ -89,14 +101,18 @@ function App() {
             subtitle="deaths" />
         </div>
 
-        <Map />
+        <Map
+          countries={mapCountries}
+          center={mapCenter}
+          zoom={mapZoom} />
       </div>
 
       <Card className="app_right">
         <CardContent>
-          <h3>Live Cases By Country</h3>
+          <h3 className="titleTable">Live Cases By Country</h3>
           <Table countries={tableData} />
-          <h3>Worldwide new cases</h3>
+          <h3 className="titleGraph">Worldwide new cases</h3>
+          <LineGraph />
         </CardContent>
       </Card>
     </div>
