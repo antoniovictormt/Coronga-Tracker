@@ -22,21 +22,21 @@ body {
   flex: 0.9;
 }
 
-.appHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-.appHeader img {
-  width: 400px;
-}
-
 .appStats {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+}
+
+.app_right {
+  display: flex;
+  flex-direction: column;
+}
+
+.app_right .MuiCardContent-root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .titleTable,
@@ -46,6 +46,10 @@ body {
 
 .titleGraph {
   margin-top: 15px;
+}
+
+.app_graph {
+  flex-grow: 1;
 }
 
 @media (max-width: 1250px) {

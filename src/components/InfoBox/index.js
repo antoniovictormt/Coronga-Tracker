@@ -3,12 +3,16 @@ import { Card, CardContent, Typography } from '@material-ui/core'
 
 import './styles.css';
 
-function InfoBox({ title, cases, total, subtitle }) {
+function InfoBox({ title, cases, total, active, subtitle, isRed, ...props }) {
   return (
-    <Card className="infoBox">
+    <Card
+      onClick={props.onClick}
+      className={`infoBox ${active && "infoBox--selected"} ${isRed && "infoBox--red"}`}>
       <CardContent>
         <Typography color="textSecondary" className="infoBox_title">{title} </Typography>
-        <h3 className="infoBox_cases" color="red"> {cases} new {subtitle} </h3>
+        <h2 className={`infoBox_cases ${!isRed && "infoBox_cases--green"}`}>
+          {cases}
+        </h2>
         <Typography color="textSecondary" className="infoBox_total">{total} of {subtitle} </Typography>
       </CardContent>
     </Card>
