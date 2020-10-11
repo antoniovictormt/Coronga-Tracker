@@ -14,19 +14,23 @@
 }
 
 .infoBox--selected {
-  border-bottom: 10px solid greenyellow;
+  border-bottom: 10px solid var(--secundary);
 }
 
-.infoBox--red {
-  border-color: red;
+.infoBox--red {  
+  color: var(--primary) !important;
+  border-color: var(--primary);
+}
+
+.infoBox_cases--black {
+  border-color: var(--black) !important;
 }
 
 .infoBox_cases--green {
-  color: greenyellow !important;
+  color: var(--secundary) !important;
 }
 
 .infoBox_cases {
-  color: #ff0000;
   font-weight: 600;
   font-size: 1.75rem;  
   margin-top: 10px !important;
@@ -34,7 +38,7 @@
 }
 
 .infoBox_total {
-  color: #555555;
+  color: var(--gray) !important;
   font-weight: 700 !important;
   font-size: 0.8rem !important;
   margin-top: 15px !important;

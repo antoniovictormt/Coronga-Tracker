@@ -1,8 +1,14 @@
 .table {
-  margin-top: 20px;
   overflow: scroll;
   height: 400px;
-  color: #6a5d5d;
+  color: var(--gray);
+  margin: 20px auto 0 auto;
+  width: 100%;
+}
+
+tbody {
+  display: inline-block;
+  width: 100%;
 }
 
 .table tr {
@@ -15,6 +21,6 @@
 }
 
 .table tr:nth-of-type(even) {
-  background-color: #f3f2f8;
-  color: var(--color-primary);
+  background-color: var(--white-primary);
+  color: var(--black);
 }

@@ -11,7 +11,7 @@ function Header({ onCountryChange, country, countries }) {
       <img src={logoImg} alt="logo" />
       <FormControl className="appDropdown">
         <Select className="select" variant="outlined" onChange={onCountryChange} value={country} >
-          <MenuItem value="worldwide">Worldwide</MenuItem>
+          <MenuItem value="Worldwide">Worldwide</MenuItem>
           {countries.map(country => (
             <MenuItem value={country.value}>{country.name}</MenuItem>
           ))}

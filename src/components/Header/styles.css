@@ -9,6 +9,16 @@
   width: 400px;
 }
 
-.app_dropdown {
-  background-color: #ffffff;
+.appDropdown {
+  background-color: var(--white);
+}
+
+@media (max-width: 1250px) {
+  .appHeader {
+    flex-direction: column;
+  }
+
+  .appHeader .select {
+    margin-top: 10px;
+  }
 }

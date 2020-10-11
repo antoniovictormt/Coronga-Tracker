@@ -1,5 +1,17 @@
 :root {
-  --color-primary: #ff0000;
+  --black: #000000;  
+  --black-rgb:rgb(0, 0, 0);
+  --black-rgb-shadow:  rgba(0, 0, 0, 0.5);
+  --gray: #6a5d5d;
+  --primary: #ff0000;
+  --primary-rgb: rgb(255, 0, 0);
+  --primary-rgb-shadow: rgba(255, 0, 0, 0.5);
+  --secundary: #008000;
+  --primary-rgb: rgb(0, 128, 0);
+  --primary-rgb-shadow: rgba(0, 128, 0, 0.5);
+  --white: #ffffff;
+  --white-primary: #f3f2f8;
+  --white-secundary:  #f5f6fa;  
 }
 
 * {
@@ -8,14 +20,15 @@
 }
 
 body {
-  background-color: #f5f6fa;
+  background-color: var(--white-secundary);
   font-family: Sans-serif;
 }
 
 .app {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  padding: 20px;
+  padding: 30px;
 }
 
 .app_left {
@@ -25,12 +38,18 @@ body {
 .appStats {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .app_right {
   display: flex;
   flex-direction: column;
+  margin-top: 12px;  
+  border-radius: 20px;
+}
+
+.app_right h3 {
+  text-align: center;
 }
 
 .app_right .MuiCardContent-root {
@@ -54,20 +73,12 @@ body {
 
 @media (max-width: 1250px) {
   .app,
-  .appHeader,
   .appStats {
     flex-direction: column;
-  }
-
-  .appHeader .select {
-    margin-top: 10px;
   }
 
   .appStats .infoBox {
     margin-bottom: 5px;
   }
 
-  .app_right {
-    margin-top: 10px;
-  }
 }

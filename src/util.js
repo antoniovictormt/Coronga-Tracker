@@ -5,14 +5,14 @@ import { Circle, Popup } from "react-leaflet";
 const casesTypeColors = {
   cases: {
     hex: "#ff0000",
-    rgb: "rgb(204, 16, 52)",
-    half_op: "rgba(204, 16, 52, 0.5)",
+    rgb: "rgb(255, 0, 0)",
+    half_op: "rgba(255, 0, 0, 0.5)",
     multiplier: 800,
   },
   recovered: {
-    hex: "#7dd71d",
-    rgb: "rgb(125, 215, 29)",
-    half_op: "rgba(125, 215, 29, 0.5)",
+    hex: "#008000",
+    rgb: "rgb(0, 128, 0)",
+    half_op: "rgba(0, 128, 0, 0.5)",
     multiplier: 1200,
   },
   deaths: {
@@ -30,7 +30,7 @@ export const sortData = (data) => {
 };
 
 export const prettyPrintStat = (stat) =>
-  stat ? `${numeral(stat).format("0,0")}` : "+0";
+  stat ? `${numeral(stat).format("0,0")}` : "0";
 
 //Draw circles on the map with interactive tooltip
 export const showDataOnMap = (data, casesType = "cases") => (

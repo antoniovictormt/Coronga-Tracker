@@ -9,7 +9,7 @@ import "./styles/styles.css";
 
 function App() {
   const [casesType, setCasesType] = useState("cases");
-  const [country, setCountry] = useState('worldwide');
+  const [country, setCountry] = useState("Worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [countries, setCountries] = useState([]);
   const [mapCountries, setMapCountries] = useState([]);
@@ -47,7 +47,7 @@ function App() {
     const countryCode = event.target.value;
 
     const url =
-      countryCode === "worldwide"
+      countryCode === "Worldwide"
         ? "https://disease.sh/v3/covid-19/all" :
         `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     await fetch(url)
@@ -55,10 +55,10 @@ function App() {
       .then(data => {
         setCountry(countryCode);
         setCountryInfo(data);
-        countryCode === "worldwide"
+        countryCode === "Worldwide"
           ? setMapCenter([34.80746, -40.4796])
           : setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        countryCode === "worldwide"
+        countryCode === "Worldwide"
           ? setMapZoom(3)
           : setMapZoom(4);
       });
@@ -77,6 +77,7 @@ function App() {
             isRed
             active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
+            country={country}
             title="Confirmed cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
             total={prettyPrintStat(countryInfo.cases)}
@@ -85,15 +86,18 @@ function App() {
           <InfoBox
             active={casesType === "recovered"}
             onClick={(e) => setCasesType("recovered")}
+            country={country}
             title="Recovered cases"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={prettyPrintStat(countryInfo.recovered)}
             subtitle="recovered cases" />
 
           <InfoBox
-            isRed
+            isBlack
+            color="black"
             active={casesType === "deaths"}
             onClick={(e) => setCasesType("deaths")}
+            country={country}
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={prettyPrintStat(countryInfo.deaths)}
@@ -109,12 +113,19 @@ function App() {
 
       <Card className="app_right">
         <CardContent>
-          <h3 className="titleTable">
-            {casesType === "cases" ? "Confirmed cases " : casesType === "recovered" ? "Recovered cases " : "Deaths rate "}
+          <div>
+            <h3 className="titleTable">
+              {casesType === "cases" ? "Confirmed cases " : casesType === "recovered" ? "Recovered cases " : "Deaths rates "}
             by Country</h3>
-          <Table countries={tableData} cases={casesType} />
-          <h3 className="titleGraph">Worldwide new
-          {casesType === "cases" ? " confirmed cases" : casesType === "recovered" ? " recovered cases" : " deaths"}
+            <Table countries={tableData} />
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="app_right">
+        <CardContent>
+          <h3 className="titleGraph">
+            Worldwide new {casesType === "cases" ? " confirmed cases" : casesType === "recovered" ? " recovered cases" : " deaths"} by day
           </h3>
           <LineGraph className="app_graph" casesType={casesType} />
         </CardContent>
