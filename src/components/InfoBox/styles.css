@@ -3,10 +3,6 @@
   cursor: pointer;
 }
 
-.infoBox:not(:last-child) {
-  margin-right: 10px;
-}
-
 .infoBox_title,
 .infoBox_cases,
 .infoBox_total {
@@ -42,4 +38,10 @@
   font-weight: 700 !important;
   font-size: 0.8rem !important;
   margin-top: 15px !important;
+}
+
+@media (min-width: 990px) {
+  .infoBox:not(:last-child) {
+    margin-right: 10px;
+  }
 }

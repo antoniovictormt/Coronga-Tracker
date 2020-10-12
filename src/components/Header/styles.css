@@ -13,12 +13,12 @@
   background-color: var(--white);
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 990px) {
   .appHeader {
     flex-direction: column;
   }
 
-  .appHeader .select {
-    margin-top: 10px;
+  .appHeader img { 
+    margin-bottom: 10px;
   }
 }

@@ -66,7 +66,7 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app_left">
+      <div>
         <Header
           country={country}
           onCountryChange={onCountryChange}
@@ -78,19 +78,17 @@ function App() {
             active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
             country={country}
-            title="Confirmed cases"
+            title="confirmed cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
-            total={prettyPrintStat(countryInfo.cases)}
-            subtitle="confirmed cases" />
+            total={prettyPrintStat(countryInfo.cases)} />
 
           <InfoBox
             active={casesType === "recovered"}
             onClick={(e) => setCasesType("recovered")}
             country={country}
-            title="Recovered cases"
+            title="recovered cases"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
-            total={prettyPrintStat(countryInfo.recovered)}
-            subtitle="recovered cases" />
+            total={prettyPrintStat(countryInfo.recovered)} />
 
           <InfoBox
             isBlack
@@ -98,31 +96,35 @@ function App() {
             active={casesType === "deaths"}
             onClick={(e) => setCasesType("deaths")}
             country={country}
-            title="Deaths"
+            title="deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
-            total={prettyPrintStat(countryInfo.deaths)}
-            subtitle="deaths" />
+            total={prettyPrintStat(countryInfo.deaths)} />
         </div>
-
-        <Map
-          casesType={casesType}
-          countries={mapCountries}
-          center={mapCenter}
-          zoom={mapZoom} />
       </div>
 
-      <Card className="app_right">
-        <CardContent>
-          <div>
-            <h3 className="titleTable">
-              {casesType === "cases" ? "Confirmed cases " : casesType === "recovered" ? "Recovered cases " : "Deaths rates "}
-            by Country</h3>
-            <Table countries={tableData} />
-          </div>
-        </CardContent>
-      </Card>
+      <div className="view">
+        <div className="app_left">
+          <Map
+            casesType={casesType}
+            countries={mapCountries}
+            center={mapCenter}
+            zoom={mapZoom} />
+        </div>
 
-      <Card className="app_right">
+        <Card className="app_right">
+          <CardContent>
+            <div>
+              <h3 className="titleTable">
+                {casesType === "cases" ? "Confirmed cases " : casesType === "recovered" ? "Recovered cases " : "Deaths rates "}
+            by Country</h3>
+              <Table countries={tableData} />
+            </div>
+          </CardContent>
+        </Card>
+
+      </div>
+
+      <Card className="graph">
         <CardContent>
           <h3 className="titleGraph">
             Worldwide new {casesType === "cases" ? " confirmed cases" : casesType === "recovered" ? " recovered cases" : " deaths"} by day

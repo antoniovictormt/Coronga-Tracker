@@ -1,27 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
-
-const casesTypeColors = {
-  cases: {
-    hex: "#ff0000",
-    rgb: "rgb(204, 16, 52)",
-    half_op: "rgba(204, 16, 52, 0.5)",
-    multiplier: 800,
-  },
-  recovered: {
-    hex: "#7dd71d",
-    rgb: "rgb(125, 215, 29)",
-    half_op: "rgba(125, 215, 29, 0.5)",
-    multiplier: 1200,
-  },
-  deaths: {
-    hex: "#000000",
-    rgb: "rgb(0, 0, 0)",
-    half_op: "rgba(0, 0, 0, 0.5)",
-    multiplier: 2000,
-  },
-};
+import { casesTypeColors } from "../../util";
 
 const options = {
   legend: {

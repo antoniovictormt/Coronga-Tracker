@@ -3,7 +3,7 @@ import { Card, CardContent, Typography } from '@material-ui/core'
 
 import './styles.css';
 
-function InfoBox({ country, title, cases, total, active, subtitle, isRed, isBlack, ...props }) {
+function InfoBox({ active, cases, country, isRed, isBlack, title, total, ...props }) {
   return (
     <Card
       onClick={props.onClick}
@@ -11,9 +11,9 @@ function InfoBox({ country, title, cases, total, active, subtitle, isRed, isBlac
       <CardContent>
         <Typography color="textSecondary" className="infoBox_title"> {country} {title} </Typography>
         <h2 className={`infoBox_cases ${!isRed && !isBlack && "infoBox_cases--green"}`}>
-          {cases} new {subtitle} of the day
+          {cases} new {title} today
         </h2>
-        <Typography color="textSecondary" className="infoBox_total">{total} {subtitle} </Typography>
+        <Typography color="textSecondary" className="infoBox_total">{total} {title} </Typography>
       </CardContent>
     </Card>
   );
