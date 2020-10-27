@@ -3,16 +3,16 @@
 </p>
 
 <p align="center">
-  <a href="#movie_camera-preview">Preview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#file_folder-demo-website">Demo Website</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#books-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#computer-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#green_book-how-to-run">How to Run</a>
+  <a href="#movie_camera-preview" color="ff0000">Preview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#file_folder-demo-website" color="ff0000">Demo Website</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#books-technologies" color="ff0000">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-project" color="ff0000">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#green_book-how-to-run" color="ff0000">How to Run</a>
 </p>
 
 <p align="center">	
    <a href="https://www.linkedin.com/in/antonio-victor-melo-trindade-48aab615b//">
-      <img alt="Antonio Victor Melo Trindade" src="https://img.shields.io/badge/-Antonio_Victor_Melo_Trindade-ff0000?style=flat-square&logo=Linkedin&logoColor=white&labelColor=3700ff" />
+      <img alt="Antonio Victor Melo Trindade" src="https://img.shields.io/badge/-Antonio_Victor_Melo_Trindade-ff0000?style=flat-square&logo=Linkedin&logoColor=white&labelColor=000000" />
    </a>
   
 </p>
