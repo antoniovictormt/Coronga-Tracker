@@ -10,6 +10,10 @@
   height: 100%;
 }
 
+.map .leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom .leaflet-control-container .leaflet-bottom.leaflet-right .leaflet-control-attribution.leaflet-control {
+  display: none;
+}
+
 .info-container {
   width: 180px;
 }

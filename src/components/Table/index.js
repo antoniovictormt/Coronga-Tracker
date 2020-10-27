@@ -4,6 +4,7 @@ import { prettyPrintStat } from "../../util";
 import "./styles.css";
 
 function Table({ countries }) {
+
   return (
     <div className="table">
       <tbody>

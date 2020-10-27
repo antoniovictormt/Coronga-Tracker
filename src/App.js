@@ -9,7 +9,7 @@ import "./styles/styles.css";
 
 function App() {
   const [casesType, setCasesType] = useState("cases");
-  const [country, setCountry] = useState("Worldwide");
+  const [country, setCountry] = useState("WorldWide");
   const [countryInfo, setCountryInfo] = useState({});
   const [countries, setCountries] = useState([]);
   const [mapCountries, setMapCountries] = useState([]);
@@ -32,9 +32,10 @@ function App() {
         .then((data) => {
           const countries = data.map((country) => ({
             name: country.country, //Brazil, Franch, Spanish
-            value: country.countryInfo.iso2, //BRA, FRA, SPA
+            value: country.countryInfo.iso3, //BRA, FRA, SPA
           }));
-          let sortedData = sortData(data);
+          const sortedData = sortData(data);
+
           setCountries(countries);
           setMapCountries(data);
           setTableData(sortedData);
@@ -47,7 +48,7 @@ function App() {
     const countryCode = event.target.value;
 
     const url =
-      countryCode === "Worldwide"
+      countryCode === "WorldWide"
         ? "https://disease.sh/v3/covid-19/all" :
         `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     await fetch(url)
@@ -55,18 +56,15 @@ function App() {
       .then(data => {
         setCountry(countryCode);
         setCountryInfo(data);
-        countryCode === "Worldwide"
-          ? setMapCenter([34.80746, -40.4796])
-          : setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        countryCode === "Worldwide"
-          ? setMapZoom(3)
-          : setMapZoom(4);
-      });
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]) &&
+          setMapZoom(4);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
     <div className="app">
-      <div>
+      <div className="header">
         <Header
           country={country}
           onCountryChange={onCountryChange}
@@ -106,9 +104,9 @@ function App() {
         <div className="app_left">
           <Map
             casesType={casesType}
-            countries={mapCountries}
             center={mapCenter}
-            zoom={mapZoom} />
+            zoom={mapZoom}
+            country={mapCountries} />
         </div>
 
         <Card className="app_right">
@@ -124,14 +122,16 @@ function App() {
 
       </div>
 
-      <Card className="graph">
-        <CardContent>
-          <h3 className="titleGraph">
-            Worldwide new {casesType === "cases" ? " confirmed cases" : casesType === "recovered" ? " recovered cases" : " deaths"} by day
+      <div className="graph">
+        <Card >
+          <CardContent>
+            <h3 className="titleGraph">
+              Worldwide new {casesType === "cases" ? " confirmed cases" : casesType === "recovered" ? " recovered cases" : " deaths"} by day
           </h3>
-          <LineGraph className="app_graph" casesType={casesType} />
-        </CardContent>
-      </Card>
+            <LineGraph className="app_graph" casesType={casesType} />
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
